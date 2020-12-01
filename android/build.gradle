@@ -1,0 +1,47 @@
+group 'com.lbx.flutter_mobileimsdk_tcp'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+// MobileIMSDK的依赖库
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation files('libs/netty-all-4.1.50.Final.jar')
+ 
+    // MobileIMSDK的SDK库
+    implementation files('libs/MobileIMSDKServer_META.jar')
+    implementation files('libs/MobileIMSDK4a_tcp.jar')
+}
